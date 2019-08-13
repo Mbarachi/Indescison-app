@@ -1,17 +1,15 @@
 import React from "react"
 
-class AddOption extends React.Component {
-
-    render() {
+function AddOption(props) {
         return(
             <div>
-                <form>
-                    <input type="text"></input>
+                <form onSubmit={props.handleAddOption}>
+                    <input type="text" name="option"></input>
                     <button>Add Option</button>
                 </form>
             </div>
         )
     }
-}
+
 
 export default AddOption
