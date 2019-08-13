@@ -1,15 +1,14 @@
 import React from "react"
 
 class AddOption extends React.Component {
-    constructor(){
-        super();
-        this.state = {}
-    }
 
     render() {
         return(
             <div>
-                Add Option here!
+                <form>
+                    <input type="text"></input>
+                    <button>Add Option</button>
+                </form>
             </div>
         )
     }

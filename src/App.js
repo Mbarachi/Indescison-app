@@ -15,12 +15,19 @@ class App extends React.Component {
     }
   }
 
+  handePick() {
+    alert("clicked");
+  }
+
+  handleRemove() {
+    alert("Removed")
+  }
   render() {
     return(
       <div>
         <Header title={this.state.title} subtitle={this.state.subtitle}/>
-        <Action/>
-        <Options option={this.state.options}/>
+        <Action handlePick = {this.handePick}/>
+        <Options options={this.state.options} handleRemove={this.handleRemove}/>
         <AddOptions/>
       </div>
     )

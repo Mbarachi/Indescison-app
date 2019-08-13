@@ -1,17 +1,12 @@
 import React from "react"
-// import Option from "./Option"
+import Option from "./Option"
 
 class Options extends React.Component {
-    constructor(){
-        super();
-    }
-
     render() {
         return(
             <div>
-               <p>{this.props.option[0]}</p>
-               <p>{this.props.option[1]}</p>
-               <p>{this.props.option[2]}</p>
+                <button onClick={this.props.handleRemove}>Remove all</button>
+               {this.props.options.map((option) =>  <Option key={option} optionText = {option} /> )}
         
             </div>
         )
