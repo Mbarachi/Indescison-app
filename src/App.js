@@ -11,34 +11,51 @@ class App extends React.Component {
     this.state = {
       title : 'Indecison App',
       subtitle: 'Put your life in the hands of God',
-      options : ["Hello", 667, "ayemitemi"]
+      options : []
     }
     this.handleAddOption = this.handleAddOption.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handePick = this.handePick.bind(this);
   }
 
-  handleAddOption(e) {
-    e.preventDefault();
-    const value = e.target.elements.option.value.trim();
-    if(value){
-      alert(value);
+  handleAddOption(option) {
+      if(!option) {
+        return "Enter valid item to add"
+      }else if (this.state.options.indexOf(option) > -1){
+        return "This item already exist"
+      } 
+
+      this.setState((prevState) => {
+        return{
+          options: prevState.options.concat(option)
+        }
+      })
     }
-  }
 
+  handleDelete() {
+    this.setState({
+      options: []
+    })
+  }
   handePick() {
-    alert("clicked");
+    const randNum = Math.floor(Math.random() * this.state.options.length)
+    const option = this.state.options[randNum];
+    alert(option);
   }
 
-  handleRemove() {
-    console.log(this.state.options);
-  }
   render() {
     return(
       <div>
         <Header title={this.state.title} subtitle={this.state.subtitle}/>
-        <Action handlePick = {this.handePick} hasOptions = {this.state.options > 0}/> 
-        <Options options={this.state.options} handleRemove={this.handleRemove}/>
+        <Action 
+          handlePick = {this.handePick} 
+          hasOptions = {this.state.options.length > 0}
+        /> 
+        <Options 
+          options={this.state.options} 
+          handleRemove={this.handleRemove}
+          handleDelete = {this.handleDelete}
+        />
         <AddOption handleAddOption = {this.handleAddOption}/>
       </div>
     )

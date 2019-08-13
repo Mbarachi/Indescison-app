@@ -3,7 +3,12 @@ import React from "react"
 function Action (props) {
     return(
             <div>
-                <button onClick = {props.handlePick}>What should I do?</button>
+                <button 
+                    onClick = {props.handlePick}
+                    disabled={!props.hasOptions}
+                >
+                    What should I do?
+                </button>
             </div>
         )
 }
