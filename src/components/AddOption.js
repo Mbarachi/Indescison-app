@@ -15,7 +15,7 @@ class AddOption extends React.Component {
         // Get the individual option from the Input box
         const option = e.target.elements.option.value.trim();
 
-        //if option exists/true then call the method pass as props pass in the option
+        //call the method passed as props and assign to a variable(error handler)
         const error =  this.props.handleAddOption(option)
 
         this.setState({

@@ -1,18 +1,18 @@
 import React from "react"
 
-class Option extends React.Component {
-    constructor(){
-        super();
-        this.state = {}
-    }
-
-    render() {
+function Option(props) {
         return(
             <div>
-                {this.props.optionText}
+                {props.optionText}
+                <button 
+                    onClick={ (e) => {
+                            props.handleDeleteOption(props.optionText)
+                        }}
+                >
+                Remove
+                </button> 
             </div>
         )
     }
-}
 
 export default Option
