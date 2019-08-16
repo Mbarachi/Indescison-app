@@ -5,6 +5,7 @@ function Options(props) {
         return(
             <div>
                 <button onClick={props.handleDelete}>Remove all</button>
+                {props.options.length === 0 && <p>Please Enter an Item to get started!</p>}
                 { 
                     props.options.map(
                         option =>  

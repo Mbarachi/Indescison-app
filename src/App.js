@@ -19,6 +19,27 @@ class App extends React.Component {
     this.handleDeleteOption = this.handleDeleteOption.bind(this);
   }
 
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem("options");
+      const options = JSON.parse(json)
+
+      if(options) {
+        this.setState({options: options})
+      }
+    } catch (error) {
+      
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.options.length !== this.state.options.length){
+      const json = JSON.stringify(this.state.options)
+      // localStorage function only stores strings, hence the line above! 
+      localStorage.setItem('options', json) 
+    }
+  }
+
   handleAddOption(option) {
     //validatoin purposes...
       if(!option) {
@@ -42,9 +63,7 @@ class App extends React.Component {
 
   handleDeleteOption(optionToRemove) {
     this.setState((prevState) => ({
-      options: prevState.options.filter((option) => {
-        return optionToRemove !== option 
-        })
+      options: prevState.options.filter( option => optionToRemove !== option )
   
     }))
     
