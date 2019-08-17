@@ -19,6 +19,7 @@ class App extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handePick = this.handePick.bind(this);
     this.handleDeleteOption = this.handleDeleteOption.bind(this);
+    this.handleClearModal = this.handleClearModal.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +44,7 @@ class App extends React.Component {
   }
 
   handleAddOption(option) {
-    //validatoin purposes...
+    //validation purposes...
       if(!option) {
         return "Enter valid item to add"
       }else if (this.state.options.indexOf(option) > -1){
@@ -80,6 +81,14 @@ class App extends React.Component {
     }))
   }
 
+  handleClearModal() {
+    this.setState(() => {
+      return{
+        selectedOption: undefined
+      }
+    })
+  }
+
   render() {
     return(
       <div>
@@ -100,6 +109,8 @@ class App extends React.Component {
         <AddOption handleAddOption = {this.handleAddOption}/>
         <OptionModal 
           selectedOption={this.state.selectedOption}
+          handleClearModal ={this.handleClearModal}
+
         />
        
       </div>
