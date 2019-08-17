@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Action from './components/Action'
 import Options from './components/Options'
 import AddOption from './components/AddOption'
+import OptionModal from './components/OptionModal'
 import './App.css';
 
 class App extends React.Component {
@@ -11,7 +12,8 @@ class App extends React.Component {
     this.state = {
       title : 'Indecison App',
       subtitle: 'Put your life in the hands of God',
-      options : []
+      options : [],
+      selectedOption: undefined
     }
     this.handleAddOption = this.handleAddOption.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -73,13 +75,18 @@ class App extends React.Component {
   handePick() {
     const randNum = Math.floor(Math.random() * this.state.options.length)
     const option = this.state.options[randNum];
-    alert(option);
+    this.setState(() => ({
+      selectedOption: option
+    }))
   }
 
   render() {
     return(
       <div>
-        <Header title={this.state.title} subtitle={this.state.subtitle}/>
+        <Header 
+          title={this.state.title} 
+          subtitle={this.state.subtitle}
+        />
         <Action 
           handlePick = {this.handePick} 
           hasOptions = {this.state.options.length > 0}
@@ -91,6 +98,10 @@ class App extends React.Component {
           handleDeleteOption={this.handleDeleteOption}
         />
         <AddOption handleAddOption = {this.handleAddOption}/>
+        <OptionModal 
+          selectedOption={this.state.selectedOption}
+        />
+       
       </div>
     )
   }
