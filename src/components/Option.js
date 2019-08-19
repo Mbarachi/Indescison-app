@@ -2,7 +2,7 @@ import React from "react"
 
 function Option(props) {
         return(
-            <div>
+            <div className="option">
                 {props.optionText}
                 <button 
                     className="button button--link"
