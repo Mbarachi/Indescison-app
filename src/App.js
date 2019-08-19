@@ -4,7 +4,6 @@ import Action from './components/Action'
 import Options from './components/Options'
 import AddOption from './components/AddOption'
 import OptionModal from './components/OptionModal'
-import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -96,21 +95,23 @@ class App extends React.Component {
           title={this.state.title} 
           subtitle={this.state.subtitle}
         />
-        <Action 
-          handlePick = {this.handePick} 
-          hasOptions = {this.state.options.length > 0}
-        /> 
-        <Options 
-          options={this.state.options} 
-          handleDelete = {this.handleDelete}
-          handleAddOption ={this.handleAddOption}
-          handleDeleteOption={this.handleDeleteOption}
-        />
-        <AddOption handleAddOption = {this.handleAddOption}/>
+
+        <div className="container">
+          <Action 
+            handlePick = {this.handePick} 
+            hasOptions = {this.state.options.length > 0}
+          /> 
+          <Options 
+            options={this.state.options} 
+            handleDelete = {this.handleDelete}
+            handleAddOption ={this.handleAddOption}
+            handleDeleteOption={this.handleDeleteOption}
+          />
+          <AddOption handleAddOption = {this.handleAddOption}/>
+        </div>
         <OptionModal 
           selectedOption={this.state.selectedOption}
           handleClearModal ={this.handleClearModal}
-
         />
        
       </div>
