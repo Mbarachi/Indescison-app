@@ -1,8 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 
-function OptionModal(props) {
-    return(
+const OptionModal = (props) => (
         <div>
             <Modal
                 isOpen={!!props.selectedOption}
@@ -15,9 +14,7 @@ function OptionModal(props) {
 
             </Modal>
         </div>
-    )
-}
-    
+)
 
 
 export default OptionModal
