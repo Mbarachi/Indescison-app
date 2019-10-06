@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      title : 'Indecison App',
+      title : 'PICK MY ROUTINE',
       subtitle: 'Put your life in the hands of God',
       options : [],
       selectedOption: undefined
